@@ -3,9 +3,11 @@ h3. TweedleDH - Diffie-Hellman key exchange over Twitter (and other means)
 This tool runs as a localhost web server and lets you generate a shared secret with a friend. This secret can be used as a key "Sealed with a Tweet":http://swatwt.com or other symmetric encryption tools (e.g. a password for a zip file).
 
 h3. What's DH?
+
 _DH_ stands for the "Diffie-Hellman":http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange key exchange. It's a neat trick that lets 2 people (say, "Alice and Bob":http://en.wikipedia.org/wiki/Alice_and_Bob) generate a shared secret by exchanging _public keys_. Even if evil "Eve":http://xkcd.com/177/ is eavesdropping on that communication and knows both public keys, she can't compute the shared secret from them.
 
 h3. What's a tweedle?
+
 A _tweedle_ is a couple of urls (called _TweedleD_ and _TweedleH_). Each is about 100 characters long, which makes them short enough for a tweet or direct message (DM). Together, they describe a DH key.
 
 Both tweedle urls point to _http://loclalhost:8933_[1] which is the _TweedleDH_ application running on your own computer. if Bob visits both of Alice's _TweedleD_ and _TweedleH_ urls while his _TweedleDH_ app is running (doesn't matter in which order he visits them), he'll be able to see the _shared secret_.
@@ -18,6 +20,7 @@ h3. Prerequisites
 * You'll also need "Web.py":http://webpy.org/download
 
 h3. Usage
+
 * Open a shell window (or cmd or terminal or whatever it's called on your OS).
 * Change to the directory that contains _tweedledh.py_ (e.g. @cd \mystuff\tweedledh@ from the _C:\>_ prompt on _Windows_).
 * Run the script by typing @python tweedledh.py@ (if you're using _ActiveState Python_ on _Windows_, just type @tweedledh.py@)
