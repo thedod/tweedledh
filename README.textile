@@ -24,7 +24,7 @@ h3. Usage
 * Open a shell window (or cmd or terminal or whatever it's called on your OS).
 * Change to the directory that contains _tweedledh.py_ (e.g. @cd \mystuff\tweedledh@ from the _C:\>_ prompt on _Windows_).
 * Run the script by typing @python tweedledh.py@ (if you're using _ActiveState Python_ on _Windows_, just type @tweedledh.py@)
-* If you're on _Windows_, you'll be asked to type a bit on the keyboard in order to generate a truely random number from the timing of your keystrokes. If you _don't_ have _Windows_ - We salute you :)
+* If you're on _Windows_, you'll be asked to type a bit on the keyboard in order to generate a truely random number from the timing of your keystrokes. If you _don't_ have _Windows_ - we salute you :)
 * If all's OK, you'll see the message @http://127.0.0.1:8933/@. This means you can now access _TweedleDH_ from your browser.
 * If you already have tweedle urls sent to you by your friend, visit then both. Otherwise, go to "http://127.0.0.1:8933":http://127.0.0.1:8933 (the "civilized" notation "http://localhost:8933":http://localhost:8933, will also work).
 * From then on, it should be self explanatory (please "let me know":http://zzzen.com/whatmail if it isn't).
