@@ -21,18 +21,11 @@ class DHSession:
         except ImportError: # python V<2.5
             import sha
             self.hash = sha.new(str(time.time()))
-    
-        try: # Windoze needs keyboard entropy
-            import msvcrt # would fail on linux
-            print "Need to generate random data. Please type randomly on the keyboard."
-            junk = 'x'*128
-            for keys in range(20):
-                while not msvcrt.kbhit():
-                    self.hash.update(junk)
-                self.hash.update(msvcrt.getch())
-            print "Got enough entropy. Thanks :-)"
-        except ImportError: # linux and mac are easy
+        if os.name=='posix':   
             self.hash.update(open('/dev/urandom').read(20))
+        else: # assuming it's windoze and http://pypi.python.org/pypi/winrandom-ctypes/ was installed
+            import winrandom
+            self.hash.update(winrandom.bytes(20))
         # Create private and public key
         self.priv=eval('0x'+self.hash.hexdigest())
         self.pub=pow(2,self.priv,P)
@@ -76,6 +69,8 @@ dh = DHSession()
 
 class Index:
     def GET(self):
+        web.header('Pragma','no-cache') # explorer wants this
+        web.header('Expires','-1') # more explorer voodoo
         peer=dh.peer_twitter and '@'+dh.peer_twitter or None
         return render.index(WEBPORT,peer,dh.use_dm,dh.tweedled,dh.tweedleh,urllib.quote(dh.tweedled),urllib.quote(dh.tweedleh),dh.peertweedled,dh.peertweedleh,dh.sharedsecret,dh.pubverify)
 
@@ -118,4 +113,3 @@ if __name__ == "__main__":
         sys.argv.append('127.0.0.1:'+WEBPORT) # web.py has a funny way of doing business :)
     app.notfound = NotFound
     app.run()
-
