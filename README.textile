@@ -19,14 +19,14 @@ h3. How to install
 * You need to have _Python_ installed on your machine. On most modern platforms (including many phones), it already is, but if you have _Windows_, "ActiveState Python":http://www.activestate.com/activepython/downloads seems to be less of a hassle to work with than the python.org "distribution":http://python.org/download/ (or so they say).
 * You'll also need "Web.py":http://webpy.org/download
 * "Download TweedleDH":http://github.com/thedod/tweedledh/archives/master to a folder (e.g. _c:\mystuff_ if you're on _Windows_) and extract the .zip or .tgz file there. This will create a folder with a name like _thedod-tweedledh-a5a7102_. You can rename it to _tweedledh_ or anything else if you want.
+* If you're on _Windows_, you'll also need "winrandom-ctype":http://pypi.python.org/pypi/winrandom-ctypes/
 
 h3. How to use
 
 * Open a shell window (or cmd or terminal or whatever it's called on your OS).
 * Change to the directory that contains _tweedledh.py_ (e.g. @cd \mystuff\tweedledh@ from the _C:\>_ prompt on _Windows_).
 * Run the script by typing @python tweedledh.py@ (if you're using _ActiveState Python_ on _Windows_, just type @tweedledh.py@)
-* If you're on _Windows_, you'll be asked to type a bit on the keyboard in order to generate a truely random number from the timing of your keystrokes. If you _don't_ have _Windows_ - we salute you :)
-* If all's OK, you'll see the message @http://127.0.0.1:8933/@. This means you can now access _TweedleDH_ from your browser.
+* once the server is up, you'll see the message @http://127.0.0.1:8933/@. This means you can now access _TweedleDH_ from your browser.
 * If you already have tweedle urls sent to you by your friend, visit then both. Otherwise, simply go to "http://127.0.0.1:8933":http://127.0.0.1:8933 (the "civilized" notation - "http://localhost:8933":http://localhost:8933 - will also work).
 * From then on, it should be self explanatory (please "let me know":http://zzzen.com/whatmail if it isn't).
 * To stop the server, hit _Ctrl+C_.
