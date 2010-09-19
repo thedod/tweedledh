@@ -8,7 +8,7 @@ _DH_ stands for the "Diffie-Hellman":http://en.wikipedia.org/wiki/Diffie%E2%80%9
 
 h3. What's a tweedle?
 
-A _tweedle_ is a couple of urls (called _TweedleD_ and _TweedleH_). Each is about 100 characters long, which makes them short enough for a tweet or direct message (DM). Together, they describe a DH key.
+A _tweedle_ is a couple of urls (called _TweedleD_ and _TweedleH_). Each is about 100 characters long, which makes them short enough for a tweet or direct message (DM). Together, they define a DH public key.
 
 Both tweedle urls point to _http://loclalhost:8933_[1] which is the _TweedleDH_ application running on your own computer. if Bob visits both of Alice's _TweedleD_ and _TweedleH_ urls while his _TweedleDH_ app is running (doesn't matter in which order he visits them), he'll be able to see the _shared secret_.
 
