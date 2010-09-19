@@ -21,6 +21,9 @@ class DHSession:
         except ImportError: # python V<2.5
             import sha
             self.hash = sha.new(str(time.time()))
+        self.reset()
+
+    def reset(self):
         if os.name=='posix':   
             self.hash.update(open('/dev/urandom').read(20))
         else: # assuming it's windoze and http://pypi.python.org/pypi/winrandom-ctypes/ was installed
@@ -31,14 +34,16 @@ class DHSession:
         self.pub=pow(2,self.priv,P)
         self.pubstr=base64.encodestring(marshal.dumps(self.pub)).strip()
         self.tweedled,self.tweedleh=[urllib.quote(x) for x in self.pubstr.split('\n')]
+        # Clear peer information
+        self.peer_twitter=None
+        self.use_dm=None
         self.peertweedled=None
         self.peertweedleh=None
         self.peerpub=None
+        # Clear shared secret
         self.dh=None
         self.sharedsecret=None
         self.pubverify=None
-        self.peer_twitter=None
-        self.use_dm=None
 
     def do_dh(self):
         try:
@@ -57,9 +62,10 @@ class DHSession:
 import web
 urls = (
     '/([dh])/(.+)','GetTweedle',
+    '/reset','Reset',
     '/peer_twitter','SetPeerTwitter',
-    '/favicon.ico','FavIcon',
     '/static/(.+)','Static',
+    '/favicon.ico','FavIcon',
     '/','Index',
 )
 
@@ -92,6 +98,11 @@ class SetPeerTwitter:
         if TWITTER_PAT.match(account):
             dh.peer_twitter=account
             dh.use_dm=i.dm
+        raise web.seeother('/')
+
+class Reset:
+    def POST(self):
+        dh.reset()
         raise web.seeother('/')
 
 class Static:

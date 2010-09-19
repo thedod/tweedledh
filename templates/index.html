@@ -6,85 +6,107 @@ $ friend = peer or 'your friend'
     <title>TweedleDH - Diffie-Hellman key-exchange in a couple of tweets</title>
 </head>
 <body>
-    <img align="right" hspace="8" width="232" height="232" alt="TweedleD and TweedleH" src="/static/tweedledh.png">
-    <h2>TweedleDH - Diffie-Hellman key-exchange in a couple of tweets</h2>
-    Don't know what a <em>tweedle</em> is? <a target="_blank" href="http://github.com/thedod/tweedledh/#readme">Read this</a>.
-    $if sharedsecret and pubverify:
-        <h4>Greetings. Your now know the shared secret (not sure <em>$friend</em> knows it yet):</h4>
-        <ol>
-            <li>If you haven't done so already, send your own <em>TweedleD</em> and <em>TweedleH</em> urls to $friend (see <a href="#send">below</a>).
-            <li>Make sure $friend also gets the following public verification number:<br>
-                <strong>$pubverify</strong><br>
-                (this number is <em>not</em> secret).<br>
-                For the extra paranoid, verify the number via phone or voice chat<br>
-                (this way you verify identity by recognizing $friend's voice, and if there's a<br>
-                <a target="_blank" href="http://en.wikipedia.org/wiki/Man-in-the-midle_attack">man-in-the-midle attack</a>,
-                you and $friend won't get the same public verification number).</li>
-            <li>After verification, you can use the <em>shared secret</em>
-                <input readonly="readonly" id="sharedsecret" value="$sharedsecret" onclick="this.select()">
-                as a <a target="_blank" href="http://SwaTwt.com">Sealed with a Tweet</a> key.<br>
-                <strong>Never</strong> send the shared <em>secret</em> over the internet
-                (<a target="_blank" href="http://SwaTwt.com">SwaTwt</a> only uses it in local JavaScript code).<br>
-            </li>
-            <li>If you're planning a long-term secret relationship with $friend, you can use the shared secret to<br>
-                seal a single message containing an
-                <a traget="_blank" href="http://github.com/thedod/SwaTwt/wiki/strong-keys">easy to remember yet hard to crack</a> key and send it to $friend.<br>
-                Remember: weak keys are
-                <strong><a target="_blank" href="http://www.simonsingh.net/The_Black_Chamber/maryqueen.html">dangerous</a></strong>.
-            </li>
-        </ol>
-    $else:
-        <h4>To generate the <em>shared secret</em>, visit the <em>TweedleD</em> and <em>TweedleH</em>
-            urls $friend sends you<br>
-            (order doesn't matter):</h4>
+    <h3>TweedleDH - Diffie-Hellman key-exchange in a couple of tweets</h3>
+    <div style="float:right">
+        <p>
+            <form method="POST" action="/reset">
+                <input type="submit" id="reset" name="reset" value="New session">
+            </form>
+        </p>
+        <p align="center">
+            <img width="232" height="232" hspace="8" vspace="8"
+                 alt="TweedleD and TweedleH" src="/static/tweedledh.png"><br>
+            Don't know what a <em>tweedle</em> is?<br>
+            <a target="_blank" href="http://github.com/thedod/tweedledh/#readme"><strong>Read this</strong></a>.
+        </p>
+    </div>
+    <fieldset id="send">
+        $if sharedsecret and pubverify:
+            <legend>If you haven't done so already, send both your <em>tweedle</em> urls to $friend</legend>
+        $else:
+            <legend>Send both your <em>tweedle</em> urls to $friend</legend>
+        $if peer:
+            $if use_dm:
+                <a target="_blank"
+                   href="http://twitter.com/home?status=d%20$peer%20TweedleD%3A%20http%3A//localhost%3A$port/d/$tweedledq">DM your TweedleD to $peer</a><br>
+                <a target="_blank"
+                   href="http://twitter.com/home?status=d%20$peer%20TweedleH%3A%20http%3A//localhost%3A$port/h/$tweedlehq">DM your TweedleH to $peer</a><br>
+            $else:
+                <a target="_blank"
+                   href="http://twitter.com/home?status=$peer%20TweedleD%3A%20http%3A//localhost%3A$port/d/$tweedledq">Tweet your TweedleD to $peer</a><br>
+                <a target="_blank"
+                   href="http://twitter.com/home?status=$peer%20TweedleH%3A%20http%3A//localhost%3A$port/h/$tweedlehq">Tweet your TweedleH to $peer</a><br>
+                <strong>Note:</strong>
+                These tweets are <em>not</em> direct messages (well, you can't use DMs unless $friend follows you),
+                and their content will be available to the public. Although this won't help crack the shared secret,
+                it would still be known that you and $friend are planning to discuss something private.<br>
+                In most cases, that's nothing to be ashamed of :)
+                
+        $else:
+            <form method="post" action="/peer_twitter">
+                <fieldset>
+                    <legend>Use Twitter</legend>
+                    I want to do this via Twitter with @<input name="peer"><br>
+                    <input name="dm" type="checkbox">This person follows me and can receive direct messages (DMs) from me.<br>
+                    <input type="submit" name="submit" value="Use Twitter">
+                </fieldset>
+            </form>
+        <p>You don't <em>have</em> to use Twitter: you can copy the urls below and send to $friend via IM, mail, etc.</p>
         <dl>
             <dt>TweedleD:</dt>
-            $if peertweedled:
-                <dd><small>$peertweedled</small></dd>
-            $else:
-                <dd><em>Waiting...</em></dd>
+            <dd><input readonly="readonly" id="tweedled"
+                    value="http://localhost:$port/d/$tweedled" onclick="this.select()"></dd>
             <dt>TweedleH:</dt>
-            $if peertweedleh:
-                <dd><small>$peertweedleh</small></dd>
-            $else:
-                <dd><em>Waiting...</em></dd>
+            <dd><input readonly="readonly" id="tweedleh"
+                    value="http://localhost:$port/h/$tweedleh" onclick="this.select()"></dd>
         </dl>
-        $if peertweedled and peertweedleh:
-            <!-- got both parts, but no share secret? must be an error -->
-            <h4>Error: You've got malformed URLs from $friend. Copy/paste accident?</h4>
-    <hr>
-    <h4 id="send">Send your <em>TweedleD</em> and <em>TweedleH</em> urls to $friend:</h4>
-    $if peer:
-        $if use_dm:
-            <a target="_blank"
-               href="http://twitter.com/home?status=d%20$peer%20TweedleD%3A%20http%3A//localhost%3A$port/d/$tweedledq">DM your TweedleD to $peer</a><br>
-            <a target="_blank"
-               href="http://twitter.com/home?status=d%20$peer%20TweedleH%3A%20http%3A//localhost%3A$port/h/$tweedlehq">DM your TweedleH to $peer</a><br>
+    </fieldset>
+    <fieldset>
+        $if sharedsecret and pubverify:
+            <legend><strong>Greetings. You now know the shared secret
+                            (not sure <em>$friend</em> knows it yet)</strong></legend>
+            <ol>
+                <li>If you haven't done so already, send your own <em>TweedleD</em> and <em>TweedleH</em> urls to $friend (see <a href="#send">above</a>).
+                <li>Make sure $friend also gets the following public verification number:<br>
+                    <strong>$pubverify</strong><br>
+                    (this number is <em>not</em> secret).
+                    <em>Do not</em> click <em>New session</em> button until verification is successful.<br>
+                    For the extra paranoid, verify the number via phone or voice chat
+                    (this way you verify identity by recognizing $friend's voice, and if there's a
+                    <a target="_blank" href="http://en.wikipedia.org/wiki/Man-in-the-midle_attack">man-in-the-midle attack</a>,
+                    you and $friend won't get the same public verification number).</li>
+                <li>After verification, you can use the <em>shared secret</em>
+                    <input readonly="readonly" id="sharedsecret" value="$sharedsecret" onclick="this.select()">
+                    as a <a target="_blank" href="http://SwaTwt.com">Sealed with a Tweet</a> key.<br>
+                    <strong>Never</strong> send the shared <em>secret</em> over the internet
+                    (<a target="_blank" href="http://SwaTwt.com">SwaTwt</a> only uses it in local JavaScript code).
+                </li>
+                <li>If you're planning a long-term secret relationship with $friend, you can use the shared secret to<br>
+                    seal a single message containing an
+                    <a traget="_blank" href="http://github.com/thedod/SwaTwt/wiki/strong-keys">easy to remember yet hard to crack</a> key and send it to $friend.<br>
+                    Remember: weak keys are
+                    <strong><a target="_blank" href="http://www.simonsingh.net/The_Black_Chamber/maryqueen.html">dangerous</a></strong>.
+                </li>
+            </ol>
         $else:
-            <a target="_blank"
-               href="http://twitter.com/home?status=$peer%20TweedleD%3A%20http%3A//localhost%3A$port/d/$tweedledq">Tweet your TweedleD to $peer</a><br>
-            <a target="_blank"
-               href="http://twitter.com/home?status=$peer%20TweedleH%3A%20http%3A//localhost%3A$port/h/$tweedlehq">Tweet your TweedleH to $peer</a><br>
-            <strong>Note:</strong>
-            These tweets are <em>not</em> direct messages (well, you can't use DMs unless $friend follows you),<br>
-            and their content will be available to the public. Although this won't help crack the shared secret,<br>
-            it would still be known that you and $friend are planning to discuss something private.<br>
-            In most cases, that's nothing to be ashamed of :)
-            
-    $else:
-        <form method="post" action="/peer_twitter">
-            <fieldset>
-                <legend>Use Twitter</legend>
-                I want to do this via Twitter with @<input name="peer"><br>
-                <input name="dm" type="checkbox">This person follows me and can receive direct messages (DMs) from me.<br>
-                <input type="submit" name="submit" value="Use Twitter">
-            </fieldset>
-        </form>
-    <p>You don't <em>have</em> to use Twitter: you can copy the urls below and send to $friend via IM, mail, etc.</p>
-    <dl>
-        <dt>TweedleD:</dt>
-        <dd><input readonly="readonly" id="tweedled" value="http://localhost:$port/d/$tweedled" onclick="this.select()"></dd>
-        <dt>TweedleH:</dt>
-        <dd><input readonly="readonly" id="tweedleh" value="http://localhost:$port/h/$tweedleh" onclick="this.select()"></dd>
-    </dl>
+            <legend>Generate shared secret</legend>
+            Visit the <em>TweedleD</em> and <em>TweedleH</em> urls $friend sends you (order doesn't matter).<br>
+            <em>Do not</em> click <em>New session</em> button until both of you have the shared secret
+            (and the same verification number).
+            <dl>
+                <dt>TweedleD:</dt>
+                $if peertweedled:
+                    <dd><small>$peertweedled</small></dd>
+                $else:
+                    <dd><em>Waiting...</em></dd>
+                <dt>TweedleH:</dt>
+                $if peertweedleh:
+                    <dd><small>$peertweedleh</small></dd>
+                $else:
+                    <dd><em>Waiting...</em></dd>
+            </dl>
+            $if peertweedled and peertweedleh:
+                <!-- got both parts, but no share secret? must be an error -->
+                <h4>Error: You've got malformed URLs from $friend. Copy/paste accident?</h4>
+    </fieldset>
 </body>
