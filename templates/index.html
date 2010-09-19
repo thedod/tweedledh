@@ -8,7 +8,7 @@ $ friend = peer or 'your friend'
 <body>
     <img align="right" hspace="8" width="232" height="232" alt="TweedleD and TweedleH" src="/static/tweedledh.png">
     <h2>TweedleDH - Diffie-Hellman key-exchange in a couple of tweets</h2>
-    First time here? <a target="_blank" href="http://github.com/thedod/tweedledh/#readme">Read me</a>.
+    Don't know what a <em>tweedle</em> is? <a target="_blank" href="http://github.com/thedod/tweedledh/#readme">Read this</a>.
     $if sharedsecret and pubverify:
         <h4>Greetings. Your now know the shared secret (not sure <em>$friend</em> knows it yet):</h4>
         <ol>
@@ -75,12 +75,12 @@ $ friend = peer or 'your friend'
         <form method="post" action="/peer_twitter">
             <fieldset>
                 <legend>Use Twitter</legend>
-                I want to do this via twitter with @<input name="peer"><br>
+                I want to do this via Twitter with @<input name="peer"><br>
                 <input name="dm" type="checkbox">This person follows me and can receive direct messages (DMs) from me.<br>
-                <input type="submit" name="submit" value="Use twitter">
+                <input type="submit" name="submit" value="Use Twitter">
             </fieldset>
         </form>
-    <p>You don't <em>have</em> to use twitter: you can copy the urls below and send to $friend via IM, mail, etc.</p>
+    <p>You don't <em>have</em> to use Twitter: you can copy the urls below and send to $friend via IM, mail, etc.</p>
     <dl>
         <dt>TweedleD:</dt>
         <dd><input readonly="readonly" id="tweedled" value="http://localhost:$port/d/$tweedled" onclick="this.select()"></dd>
