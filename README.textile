@@ -1,6 +1,6 @@
 h3. TweedleDH - Diffie-Hellman key exchange over Twitter (and other means)
 
-This tool runs as a localhost web server and lets you generate a shared secret with a friend. This secret can be used as a key "Sealed with a Tweet":http://swatwt.com or other symmetric encryption tools (e.g. a password for a zip file).
+This tool runs as a localhost web server and lets you generate a shared secret with a friend. This secret can be used as a key for "Sealed with a Tweet":http://swatwt.com or other symmetric encryption tools (e.g. a password for a zip file).
 
 Here are some illustrated and annotated screen-shots:
 
