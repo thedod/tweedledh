@@ -119,6 +119,7 @@ def NotFound():
     raise web.seeother('/')
 
 if __name__ == "__main__":
+    sys.path.append(os.path.dirname(sys.argv[0]))
     app = web.application(urls, globals())
     if len(sys.argv)==1:
         sys.argv.append('127.0.0.1:'+WEBPORT) # web.py has a funny way of doing business :)
