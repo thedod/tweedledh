@@ -4,8 +4,7 @@ This tool runs as a localhost web server and lets you generate a shared secret w
 
 Here are some illustrated and annotated screen-shots:
 
-!http://d37i651vg1sd88.cloudfront.net/FJF/OO4C/GE7LFB62/FJFOO4CGE7LFB62.SMALL.jpg!:http://www.instructables.com/file/FJFOO4CGE7LFB62/?size=ORIGINAL !http://www.instructables.com/files/deriv/FRQ/LTL9/GEE03QKM/FRQLTL9GEE03QKM.SMALL.jpg!:http://www.instructables.com/file/FRQLTL9GEE03QKM/?size=ORIGINAL
-!http://d37i651vg1sd88.cloudfront.net/FYN/ZW4X/GE7L4IP3/FYNZW4XGE7L4IP3.SMALL.jpg!:http://www.instructables.com/file/FYNZW4XGE7L4IP3/?size=ORIGINAL !http://d37i651vg1sd88.cloudfront.net/FNO/F503/GECKO7V3/FNOF503GECKO7V3.SMALL.jpg!:http://www.instructables.com/file/FNOF503GECKO7V3/?size=ORIGINAL
+!http://d37i651vg1sd88.cloudfront.net/FJF/OO4C/GE7LFB62/FJFOO4CGE7LFB62.SMALL.jpg!:http://www.instructables.com/file/FJFOO4CGE7LFB62/?size=ORIGINAL !http://www.instructables.com/files/deriv/FRQ/LTL9/GEE03QKM/FRQLTL9GEE03QKM.SMALL.jpg!:http://www.instructables.com/file/FRQLTL9GEE03QKM/?size=ORIGINAL !http://d37i651vg1sd88.cloudfront.net/FYN/ZW4X/GE7L4IP3/FYNZW4XGE7L4IP3.SMALL.jpg!:http://www.instructables.com/file/FYNZW4XGE7L4IP3/?size=ORIGINAL
 
 h3. What's DH?
 
