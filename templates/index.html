@@ -70,7 +70,7 @@ $ friend = peer or 'your friend'
                 <li>Make sure $friend also gets the following public verification number:<br>
                     <strong>$pubverify</strong><br>
                     (this number is <em>not</em> secret).
-                    <em>Do not</em> click <em>New session</em> button until verification is successful.<br>
+                    <em>Do not</em> click the <em>New session</em> button until verification is successful.<br>
                     For the extra paranoid, verify the number via phone or voice chat
                     (this way you verify identity by recognizing $friend's voice, and if there's a
                     <a target="_blank" href="http://en.wikipedia.org/wiki/Man-in-the-midle_attack">man-in-the-midle attack</a>,
@@ -89,24 +89,30 @@ $ friend = peer or 'your friend'
                 </li>
             </ol>
         $else:
-            <legend>Generate shared secret</legend>
-            Visit the <em>TweedleD</em> and <em>TweedleH</em> urls $friend sends you (order doesn't matter).<br>
-            <em>Do not</em> click <em>New session</em> button until both of you have the shared secret
-            (and the same verification number).
+            <legend>Visit both <em>tweedle</em> urls $friend sends you</legend>
             <dl>
                 <dt>TweedleD:</dt>
                 $if peertweedled:
-                    <dd><small>$peertweedled</small></dd>
+                    $# If we have both and no shared secret, Something's fishy.
+                    $if peertweedleh:
+                        <dd>&#9746; <strong>Error</strong> (copy/paste accident?).
+                        Try to revisit $friend's <strong>TweedleD</strong> url.</dd>
+                    $else:
+                        <dd>&#9745; Got TweedleD</dd>
                 $else:
-                    <dd><em>Waiting...</em></dd>
+                    <dd>&#9744; <em>Please visit $friend's <strong>TweedleD</strong> url</em></dd>
                 <dt>TweedleH:</dt>
                 $if peertweedleh:
-                    <dd><small>$peertweedleh</small></dd>
+                    $# If we have both and no shared secret, Something's fishy.
+                    $if peertweedled:
+                        <dd>&#9746; If revisiting <strong>TweedleD</strong> didn't help,
+                            Try to revisit $friend's <strong>TweedleH</strong>.</dd>
+                    $else:
+                        <dd>&#9745; Got TweedleH</dd>
                 $else:
-                    <dd><em>Waiting...</em></dd>
+                    <dd>&#9744; <em>Please visit $friend's <strong>TweedleH</strong> url</em></dd>
             </dl>
-            $if peertweedled and peertweedleh:
-                <!-- got both parts, but no share secret? must be an error -->
-                <h4>Error: You've got malformed URLs from $friend. Copy/paste accident?</h4>
+            <em>Do not</em> click the <em>New session</em> button until both of you have the shared secret
+            (and the same verification number).
     </fieldset>
 </body>
