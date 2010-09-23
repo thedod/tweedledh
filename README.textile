@@ -2,7 +2,7 @@ h3. TweedleDH - Diffie-Hellman key exchange over Twitter (and other means)
 
 This tool runs as a localhost web server and lets you generate a shared secret with a friend. This secret can be used as a key for "Sealed with a Tweet":http://swatwt.com or other symmetric encryption tools (e.g. a password for a zip file).
 
-Here are some illustrated and annotated screen-shots:
+Here are some illustrated and annotated screen-shots (you can also watch a "video":http://www.youtube.com/watch?v=4OYwVjwG210):
 
 !http://d37i651vg1sd88.cloudfront.net/FJF/OO4C/GE7LFB62/FJFOO4CGE7LFB62.SMALL.jpg!:http://www.instructables.com/file/FJFOO4CGE7LFB62/?size=ORIGINAL !http://www.instructables.com/files/deriv/FRQ/LTL9/GEE03QKM/FRQLTL9GEE03QKM.SMALL.jpg!:http://www.instructables.com/file/FRQLTL9GEE03QKM/?size=ORIGINAL !http://d37i651vg1sd88.cloudfront.net/FYN/ZW4X/GE7L4IP3/FYNZW4XGE7L4IP3.SMALL.jpg!:http://www.instructables.com/file/FYNZW4XGE7L4IP3/?size=ORIGINAL
 
@@ -21,9 +21,9 @@ This doesn't mean that Alice knows it yet. Bob will have to tweet [or otherwise 
 h3. How to install
 
 * You need to have _Python_ installed on your machine. On most modern platforms (including many phones), it already is, but if you have _Windows_, "ActiveState Python":http://www.activestate.com/activepython/downloads seems to be less of a hassle to work with than the python.org "distribution":http://python.org/download/ (or so they say).
-* You'll also need "Web.py":http://webpy.org/download
-* "Download TweedleDH":http://github.com/thedod/tweedledh/archives/master to a folder (e.g. _c:\mystuff_ if you're on _Windows_) and extract the .zip or .tgz file there. This will create a folder with a name like _thedod-tweedledh-a5a7102_. You can rename it to _tweedledh_ or anything else if you want.
+* You'll need to install "Web.py":http://webpy.org/download
 * If you're on _Windows_, you'll also need "winrandom-ctype":http://pypi.python.org/pypi/winrandom-ctypes/
+* "Download TweedleDH":http://github.com/thedod/tweedledh/archives/master to a folder (e.g. _c:\mystuff_ if you're on _Windows_) and extract the .zip or .tgz file there. This will create a folder with a name like _thedod-tweedledh-a5a7102_. You can rename it to _tweedledh_ or anything else if you want.
 
 h3. How to use
 
