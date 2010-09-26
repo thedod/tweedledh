@@ -2,7 +2,7 @@ h3. TweedleDH - Diffie-Hellman key exchange over Twitter (and other means)
 
 This tool runs as a localhost web server and lets you generate a shared secret with a friend. This secret can be used as a key for "Sealed with a Tweet":http://swatwt.com or other symmetric encryption tools (e.g. a password for a zip file).
 
-There's a tutorial at "http://j.mp/privacy4dummies". Here's a pictorial summary:
+*There's a tutorial at "http://j.mp/privacy4dummies":http://j.mp/privacy4dummies. Here's a pictorial summary:*
 
 !http://d37i651vg1sd88.cloudfront.net/FJF/OO4C/GE7LFB62/FJFOO4CGE7LFB62.SMALL.jpg!:http://www.instructables.com/file/FJFOO4CGE7LFB62/?size=ORIGINAL !http://www.instructables.com/files/deriv/FRQ/LTL9/GEE03QKM/FRQLTL9GEE03QKM.SMALL.jpg!:http://www.instructables.com/file/FRQLTL9GEE03QKM/?size=ORIGINAL !http://d37i651vg1sd88.cloudfront.net/FYN/ZW4X/GE7L4IP3/FYNZW4XGE7L4IP3.SMALL.jpg!:http://www.instructables.com/file/FYNZW4XGE7L4IP3/?size=ORIGINAL
 
